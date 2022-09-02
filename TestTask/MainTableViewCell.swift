@@ -13,6 +13,7 @@ class MainTableViewCell: UITableViewCell {
     override func prepareForReuse() {
         super.prepareForReuse()
         self.lblMovie.isHidden = true
+        lblMovie.text?.removeAll()
     }
     override func awakeFromNib() {
         super.awakeFromNib()
