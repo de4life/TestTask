@@ -58,6 +58,17 @@ extension ViewController: UITableViewDataSource {
             return UITableViewCell()
         }
         cell.lblMovie.text = stringArr[indexPath.row]
+//        if (indexPath.row == 1) {
+//            cell.lblMovie.text = ""
+//        } else {
+//            cell.lblMovie.text = stringArr[indexPath.row]
+//
+//        }
+//        if indexPath.row % 1 == 0 {
+//            cell.contentView.backgroundColor = .lightGray
+//        } else {
+//            cell.lblMovie.text = ""
+//        }
         return cell
     }
     
