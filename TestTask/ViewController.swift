@@ -28,6 +28,7 @@ class ViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
+// MARK: - Action button
     @IBAction func button(_ sender: Any) {
         if let title = textField1.text,
            let years = Int(textField2.text!) {
@@ -42,7 +43,7 @@ class ViewController: UIViewController {
         }
     }
 
-
+// MARK: - Table View
 extension ViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("You")
