@@ -35,9 +35,7 @@ class ViewController: UIViewController {
         if let title = textField1.text,
            let years = Int(textField2.text!) {
             self.stringArr.insert(title + ("\(years)"))
-            tableView.beginUpdates()
-            tableView.insertRows(at: [IndexPath(row: 0, section: 0)], with: .right)
-            tableView.endUpdates()
+            tableView.reloadSections(IndexSet(integer: 0), with: .right)
             
             textField1.text = nil
             textField2.text = nil
@@ -61,10 +59,10 @@ extension ViewController: UITableViewDataSource {
             return UITableViewCell()
         }
         cell.lblMovie.text = Array(stringArr)[indexPath.row]
-        if indexPath.row % 2 == 0 {
-            cell.contentView.backgroundColor = .lightGray
-        } else {
+        if indexPath.row % 1 == 1 {
             print("This movie already exists.")
+        } else {
+            cell.contentView.backgroundColor = .white
 
         }
 //        if indexPath.row % 1 == 0 {
