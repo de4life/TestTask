@@ -7,6 +7,7 @@
 
 import UIKit
 
+
 class ViewController: UIViewController {
 // MARK: - Outlets
     @IBOutlet weak var textField1: UITextField!
@@ -14,7 +15,8 @@ class ViewController: UIViewController {
    
     @IBOutlet weak var tableView: UITableView!
 // MARK: - Public
-    var stringArr = [String]()
+    var stringArr: Set<String> = []
+
 
 // MARK: - Initialization
     override func viewDidLoad() {
@@ -32,7 +34,7 @@ class ViewController: UIViewController {
     @IBAction func button(_ sender: Any) {
         if let title = textField1.text,
            let years = Int(textField2.text!) {
-            self.stringArr.insert(title + ("\(years)"), at: 0)
+            self.stringArr.insert(title + ("\(years)"))
             tableView.beginUpdates()
             tableView.insertRows(at: [IndexPath(row: 0, section: 0)], with: .right)
             tableView.endUpdates()
@@ -58,13 +60,13 @@ extension ViewController: UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "MainTableViewCell", for: indexPath) as? MainTableViewCell else {
             return UITableViewCell()
         }
-        cell.lblMovie.text = stringArr[indexPath.row]
-//        if (indexPath.row == 1) {
-//            cell.lblMovie.text = ""
-//        } else {
-//            cell.lblMovie.text = stringArr[indexPath.row]
-//
-//        }
+        cell.lblMovie.text = Array(stringArr)[indexPath.row]
+        if indexPath.row % 2 == 0 {
+            cell.contentView.backgroundColor = .lightGray
+        } else {
+            print("This movie already exists.")
+
+        }
 //        if indexPath.row % 1 == 0 {
 //            cell.contentView.backgroundColor = .lightGray
 //        } else {
